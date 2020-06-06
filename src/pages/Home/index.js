@@ -24,21 +24,19 @@ import {
 import api from '../../services/api';
 import { formatPrice } from '../../utils/format';
 
-const Home = ({ amount, addToCartRequest }) => {
-  const [value, setValue] = useState({
-    products: [],
-  });
+function Home({ amount, addToCartRequest }) {
+  const [products, setProducts] = useState([]);
 
-  const getProducts = async () => {
+  async function getProducts() {
     const { data } = await api.get('products');
 
-    const products = data.map((product) => ({
+    const productsData = data.map((product) => ({
       ...product,
       priceFormatted: formatPrice(product.price),
     }));
 
-    setValue({ products });
-  };
+    setProducts(productsData);
+  }
 
   useEffect(() => {
     getProducts();
@@ -66,7 +64,6 @@ const Home = ({ amount, addToCartRequest }) => {
     );
   }
 
-  const { products } = value;
   return (
     <Container>
       <Content>
@@ -79,7 +76,7 @@ const Home = ({ amount, addToCartRequest }) => {
       </Content>
     </Container>
   );
-};
+}
 
 Home.propTypes = {
   addToCartRequest: PropTypes.func.isRequired,

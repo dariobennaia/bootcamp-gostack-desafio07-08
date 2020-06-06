@@ -2,7 +2,13 @@ module.exports = {
   env: {
     es6: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:react-hooks/recommended'
+    ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -16,7 +22,11 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: [
+    'react',
+    'prettier',
+    'react-hooks'
+  ],
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
@@ -31,5 +41,7 @@ module.exports = {
     'react/static-property-placement': 'off',
     'no-param-reassign': 'off',
     'no-console': ['error', { allow: ['tron'] }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
 };

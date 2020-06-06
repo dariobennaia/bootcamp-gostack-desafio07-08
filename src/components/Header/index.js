@@ -6,10 +6,10 @@ import { RectButton } from 'react-native-gesture-handler';
 import { Container, Logo, Cart, Basket, Badge, TextBadge } from './styles';
 import logo from '../../assets/logo.png';
 
-const Header = ({ navigation, cartSize }) => {
-  const navigate = (page) => {
+function Header({ navigation, cartSize }) {
+  function navigate(page) {
     navigation.navigate(page, {});
-  };
+  }
 
   return (
     <Container>
@@ -24,7 +24,7 @@ const Header = ({ navigation, cartSize }) => {
       </Cart>
     </Container>
   );
-};
+}
 
 Header.propTypes = {
   cartSize: PropTypes.number.isRequired,

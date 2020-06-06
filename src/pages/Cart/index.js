@@ -31,18 +31,18 @@ import {
   TextCartEmpty,
 } from './styles';
 
-const Cart = ({ removeFromCart, updateAmountRequest, cart, total }) => {
-  const increment = (product) => {
+function Cart({ removeFromCart, updateAmountRequest, cart, total }) {
+  function increment(product) {
     const { id, amount } = product;
     updateAmountRequest(id, amount + 1);
-  };
+  }
 
-  const decrement = (product) => {
+  function decrement(product) {
     const { id, amount } = product;
     updateAmountRequest(id, amount - 1);
-  };
+  }
 
-  const renderItem = (product) => {
+  function renderItem(product) {
     const { item } = product;
     return (
       <CartItem>
@@ -72,7 +72,7 @@ const Cart = ({ removeFromCart, updateAmountRequest, cart, total }) => {
         </ItemAmount>
       </CartItem>
     );
-  };
+  }
 
   return (
     <Container>
@@ -103,7 +103,7 @@ const Cart = ({ removeFromCart, updateAmountRequest, cart, total }) => {
       </CartList>
     </Container>
   );
-};
+}
 
 Cart.propTypes = {
   removeFromCart: PropTypes.func.isRequired,
