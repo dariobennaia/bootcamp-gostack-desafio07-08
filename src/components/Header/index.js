@@ -1,12 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { RectButton } from 'react-native-gesture-handler';
 
 import { Container, Logo, Cart, Basket, Badge, TextBadge } from './styles';
 import logo from '../../assets/logo.png';
 
-function Header({ navigation, cartSize }) {
+function Header({ navigation }) {
+  const cartSize = useSelector((state) => state.cart.length);
+
   function navigate(page) {
     navigation.navigate(page, {});
   }
@@ -27,14 +29,9 @@ function Header({ navigation, cartSize }) {
 }
 
 Header.propTypes = {
-  cartSize: PropTypes.number.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  cartSize: state.cart.length,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;
